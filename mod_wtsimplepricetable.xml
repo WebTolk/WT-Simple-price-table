@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>Простая таблица для формирования прайс-листов</name>
+	<author>Sergey Tolkachyov and Sergey Sergevnin</author>
+	<creationDate>03.02.2026</creationDate>
+	<copyright>Copyright (c) 2025 - 2026 Sergey Tolkachyov. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@web-tolk.ru</authorEmail>
+	<authorUrl>https://web-tolk.ru</authorUrl>
+	<version>1.0.0</version>
+	<description>Модуль для создания таблиц прай-листов</description>
+	<namespace path="src">Joomla\Module\Wtsimplepricetable</namespace>
+	<scriptfile>script.php</scriptfile>
+	<languages folder="language">
+		<language tag="ru-RU">ru-RU/mod_wtsimplepricetable.sys.ini</language>
+		<language tag="en-GB">en-GB/mod_wtsimplepricetable.sys.ini</language>
+	</languages>
+	<files>
+		<folder module="mod_wtsimplepricetable">services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="COM_MODULES_BASIC_FIELDSET_LABEL">
+				<field addfieldprefix="Joomla\Module\Wtsimplepricetable\Site\Fields" type="moduleinfo" name="moduleinfo"/>
+				<field name="currency" class="w-25" type="text" label="Валюта"/>
+				<field name="sections"
+					   label="Разделы"
+					   type="subform"
+					   multiple="true"
+					   description="Список разделов сайта, куда добавлять материалы"
+					   parentclass="stack"
+				>
+					<form>
+						<field type="text"
+							   name="section_title" label="Заголовок раздела"/>
+						<field name="table_rows"
+							   label="Строки таблицы"
+							   type="subform"
+							   layout="joomla.form.field.subform.repeatable-table"
+							   multiple="true"
+						>
+							<form>
+								<field name="product_icon"
+									   type="media"
+									   preview="false"
+									   label="Изображение"/>
+								<field name="product_title" type="text" label="Наименование товара/услуги"/>
+								<field name="show_from" type="checkbox" label="Префикс -от-" value="1"   />
+								<field name="price" type="text" class="w-50" label="Цена (новая цена)"/>
+								<field name="old_price" type="text" class="w-50"  label="Старая цена"/>
+							</form>
+						</field>
+					</form>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
