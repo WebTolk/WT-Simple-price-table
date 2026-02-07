@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
-	<name>Простая таблица для формирования прайс-листов</name>
+	<name> WT Simple price table</name>
 	<author>Sergey Tolkachyov and Sergey Sergevnin</author>
-	<creationDate>03.02.2026</creationDate>
+	<creationDate>04.02.2026</creationDate>
 	<copyright>Copyright (c) 2025 - 2026 Sergey Tolkachyov. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@web-tolk.ru</authorEmail>
 	<authorUrl>https://web-tolk.ru</authorUrl>
 	<version>1.0.0</version>
-	<description>Модуль для создания таблиц прай-листов</description>
+	<description>Модуль для создания таблиц прайc-листов</description>
 	<namespace path="src">Joomla\Module\Wtsimplepricetable</namespace>
 	<scriptfile>script.php</scriptfile>
 	<languages folder="language">
@@ -22,34 +22,46 @@
 	</files>
 	<config>
 		<fields name="params">
-			<fieldset name="basic" label="COM_MODULES_BASIC_FIELDSET_LABEL">
+			<fieldset name="basic" label="COM_MODULES_BASIC_FIELDSET_LABEL" groupByFieldset="true">
 				<field addfieldprefix="Joomla\Module\Wtsimplepricetable\Site\Fields" type="moduleinfo" name="moduleinfo"/>
-				<field name="currency" class="w-25" type="text" label="Валюта"/>
+				<field name="currency"
+					   class="w-25"
+					   type="text"
+					   label="MOD_WTSIMPLEPRICETABLE_FIELD_CURRENCY_LABEL"
+					   description="MOD_WTSIMPLEPRICETABLE_FIELD_CURRENCY_DESC"/>
 				<field name="sections"
-					   label="Разделы"
+					   label="MOD_WTSIMPLEPRICETABLE_FIELD_GROUPS_LABEL"
 					   type="subform"
 					   multiple="true"
-					   description="Список разделов сайта, куда добавлять материалы"
+					   description="MOD_WTSIMPLEPRICETABLE_FIELD_GROUPS_DESC"
 					   parentclass="stack"
 				>
 					<form>
 						<field type="text"
-							   name="section_title" label="Заголовок раздела"/>
+							   name="section_title" label="MOD_WTSIMPLEPRICETABLE_FIELD_GROUPTITLE_LABEL" parentclass="stack"/>
 						<field name="table_rows"
-							   label="Строки таблицы"
+							   label="MOD_WTSIMPLEPRICETABLE_FIELD_TABLEROWS_LABEL"
 							   type="subform"
 							   layout="joomla.form.field.subform.repeatable-table"
 							   multiple="true"
+							   groupByFieldset="true"
+							   parentclass="stack"
 						>
 							<form>
-								<field name="product_icon"
-									   type="media"
-									   preview="false"
-									   label="Изображение"/>
-								<field name="product_title" type="text" label="Наименование товара/услуги"/>
-								<field name="show_from" type="checkbox" label="Префикс -от-" value="1"   />
-								<field name="price" type="text" class="w-50" label="Цена (новая цена)"/>
-								<field name="old_price" type="text" class="w-50"  label="Старая цена"/>
+								<fieldset name="table-col-product" label="MOD_WTSIMPLEPRICETABLE_TABLE_COL_PRODUCT">
+									<field name="product_icon"
+										   type="media"
+										   preview="false"
+										   label="MOD_WTSIMPLEPRICETABLE_FIELD_PRODUCTICON_LABEL"/>
+									<field name="product_title" class="w-100" type="text" label="MOD_WTSIMPLEPRICETABLE_FIELD_PRODUCTTITLE_LABEL"/>
+								</fieldset>
+								<fieldset  name="table-col-price" label="MOD_WTSIMPLEPRICETABLE_TABLE_COL_PRICE" class="ps-5" labelclass="ps-5">
+									<field name="price" type="text" class="w-50" label="MOD_WTSIMPLEPRICETABLE_FIELD_PRICE_LABEL"/>
+									<field name="old_price" type="text" class="w-50"  label="MOD_WTSIMPLEPRICETABLE_FIELD_OLDPRICE_LABEL"/>
+								</fieldset>
+								<fieldset  name="table-col-from" label="MOD_WTSIMPLEPRICETABLE_TABLE_COL_FROM">
+									<field name="show_from" type="checkbox" label="MOD_WTSIMPLEPRICETABLE_FIELD_SHOWFROM_LABEL" value="1"/>
+								</fieldset>
 							</form>
 						</field>
 					</form>
