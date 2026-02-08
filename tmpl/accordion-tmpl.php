@@ -21,7 +21,10 @@ if (empty($sections)) return;
 ?>
 <div class="d-flex flex-column">
    <?php foreach ($sections as $section) : ?>
-           <h3 class="d-inline h5"><?php echo $section->section_title; ?></h3>
+       <details class="p-3 bg-light border border-light mb-2 shadow-sm">
+           <summary class="py-2">
+               <h3 class="d-inline h5"><?php echo $section->section_title; ?></h3>
+           </summary>
            <?php if (!empty($section->table_rows)): ?>
                <table class="table">
                    <?php foreach ($section->table_rows as $row) : ?>
@@ -63,5 +66,6 @@ if (empty($sections)) return;
                    <?php endforeach; ?>
                </table>
            <?php endif; ?>
+       </details>
    <?php endforeach; ?>
 </div>
