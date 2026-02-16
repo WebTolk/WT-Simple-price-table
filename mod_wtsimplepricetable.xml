@@ -117,4 +117,8 @@
 			</fieldset>
 		</fields>
 	</config>
+	<updateservers>
+		<server type="extension" priority="1" name="WT Simple price table Joomla module updates">https://web-tolk.ru/component/swjprojects/jupdate?element=mod_wtsimplepricetable</server>
+	</updateservers>
+	<changelogurl>https://web-tolk.ru/jchangelog?element=mod_wtsimplepricetable</changelogurl>
 </extension>
